@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintEase | Online Xerox & Printing Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header__inner">
+        <a class="logo" href="#">PrintEase</a>
+        <nav class="nav">
+          <a href="#hero">Home</a>
+          <a href="order.html">New Order</a>
+          <a href="#orders">My Orders</a>
+          <a href="#chatbot">Chatbot</a>
+          <a href="#contact">Contact</a>
+          <a class="login" href="login.html">Login</a>
+        </nav>
+        <button class="btn btn--ghost mobile-login">Login</button>
+        <button class="nav-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <p class="eyebrow">Fast • Friendly • Anytime</p>
+            <h1>Print Anything, Anytime — Delivered to Your Door</h1>
+            <p class="lead">
+              Same-day document printing with premium finishing from your
+              neighborhood Xerox experts. Upload, customize, and relax.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="order.html">Upload &amp; Print Now</a>
+              <button class="btn btn--ghost" type="button">
+                Explore Services
+              </button>
+            </div>
+            <div class="hero__stats">
+              <div>
+                <strong>1K+</strong>
+                <span>Documents daily</span>
+              </div>
+              <div>
+                <strong>50+</strong>
+                <span>Verified dealers</span>
+              </div>
+              <div>
+                <strong>&lt;90m</strong>
+                <span>Average delivery</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero__panel">
+            <div class="upload-card">
+              <div class="upload-dropzone" id="uploadDropzone">
+                <input type="file" id="fileInput" hidden accept=".pdf,.doc,.docx,.ppt,.pptx" />
+                <p>No file selected</p>
+                <small>Drag &amp; drop or click to upload</small>
+              </div>
+              <div class="progress">
+                <div class="progress__bar" id="uploadProgress"></div>
+              </div>
+              <button class="btn btn--primary" type="button">
+                Start Upload
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="steps" aria-label="How it works">
+        <div class="container">
+          <h2>How PrintEase Works</h2>
+          <div class="steps__grid">
+            <article>
+              <span>1</span>
+              <h3>Upload</h3>
+              <p>Securely upload PDFs or Office files from desktop or mobile.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Customize</h3>
+              <p>Choose paper, color, binding, lamination, finishing, and more.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Choose dealer</h3>
+              <p>Pick trusted local Xerox partners with live ETA &amp; pricing.</p>
+            </article>
+            <article>
+              <span>4</span>
+              <h3>Get it delivered</h3>
+              <p>Doorstep delivery or instant pickup — you decide every time.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="order" id="order">
+        <div class="container">
+          <header class="section-header">
+            <div>
+              <p class="eyebrow">New order flow</p>
+              <h2>Upload files &amp; detail your print preferences</h2>
+            </div>
+            <button class="btn btn--ghost">Save draft</button>
+          </header>
+
+          <div class="order__grid">
+            <form class="order-form">
+              <label>
+                Paper Size
+                <select>
+                  <option>A4</option>
+                  <option>A3</option>
+                  <option>Letter</option>
+                  <option>Legal</option>
+                </select>
+              </label>
+              <label>
+                Paper Type
+                <select>
+                  <option>80 GSM Matte</option>
+                  <option>100 GSM Premium</option>
+                  <option>Recycled</option>
+                  <option>Glossy</option>
+                </select>
+              </label>
+              <label>
+                Print Style
+                <select>
+                  <option>Color, double-sided</option>
+                  <option>Color, single-sided</option>
+                  <option>B&amp;W, double-sided</option>
+                  <option>B&amp;W, single-sided</option>
+                </select>
+              </label>
+              <label>
+                Binding
+                <select>
+                  <option>Spiral</option>
+                  <option>Wiro</option>
+                  <option>Stapled</option>
+                  <option>Perfect bound</option>
+                </select>
+              </label>
+              <label>
+                Finishing
+                <select>
+                  <option>Matte Lamination</option>
+                  <option>Gloss Lamination</option>
+                  <option>UV Coat</option>
+                  <option>None</option>
+                </select>
+              </label>
+              <label>
+                Copies
+                <input type="number" min="1" value="1" />
+              </label>
+              <label class="toggle">
+                <span>Urgent priority</span>
+                <input type="checkbox" />
+                <span class="toggle__switch"></span>
+              </label>
+            </form>
+
+            <div class="summary-card">
+              <h3>Order summary</h3>
+              <ul>
+                <li><span>Pages</span><strong>48 (auto-detected)</strong></li>
+                <li><span>Estimated cost</span><strong>₹ 420 - ₹ 480</strong></li>
+                <li><span>Ready by</span><strong>Today, 7:30 PM</strong></li>
+              </ul>
+              <div class="summary-card__cta">
+                <button class="btn btn--primary">Continue to dealers</button>
+                <small>You can adjust everything before paying.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dealers" id="dealers">
+        <div class="container">
+          <header class="section-header">
+            <div>
+              <p class="eyebrow">Trusted partners</p>
+              <h2>Featured dealers near you</h2>
+            </div>
+            <div class="dealer-controls">
+              <button class="btn btn--ghost" data-direction="prev">‹</button>
+              <button class="btn btn--ghost" data-direction="next">›</button>
+            </div>
+          </header>
+
+          <div class="dealer-carousel" id="dealerCarousel">
+            <!-- Cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <section class="delivery" id="delivery">
+        <div class="container delivery__grid">
+          <div>
+            <p class="eyebrow">Pickup or doorstep</p>
+            <h2>Choose how you receive your prints</h2>
+            <div class="delivery__options">
+              <label class="option-card">
+                <input type="radio" name="fulfillment" checked />
+                <span>Door delivery</span>
+                <p>Live-tracked couriers with proof-of-delivery updates.</p>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="fulfillment" />
+                <span>Store pickup</span>
+                <p>Skip the line with QR pickup ready in 15 minutes.</p>
+              </label>
+            </div>
+            <div class="delivery__cta">
+              <button class="btn btn--primary">Place smart order</button>
+              <button class="btn btn--ghost">Chat with an expert</button>
+            </div>
+          </div>
+          <div class="map-card" aria-hidden="true">
+            <div class="map-card__badge">Live ETA</div>
+            <div class="map-card__map"></div>
+            <div class="map-card__footer">
+              <strong>Delivery ETA: 42 mins</strong>
+              <span>Courier: Pranav (Blue Swift)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="chatbot">
+        <div class="container cta__inner">
+          <div>
+            <p class="eyebrow">Need help?</p>
+            <h2>Chat with PrintEase Copilot</h2>
+            <p>
+              Ask about pricing, bulk orders, paper recommendations, or dealer
+              availability — our AI assistant replies instantly.
+            </p>
+          </div>
+          <button class="btn btn--primary">Launch Chatbot</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container footer__grid">
+        <div>
+          <a class="logo" href="#">PrintEase</a>
+          <p>
+            Smart online Xerox &amp; printing across 20+ cities. Bulk,
+            on-demand, or subscription — we’ve got you covered.
+          </p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p>+91 95850 68767</p>
+          <p>theresan@printease.in</p>
+        </div>
+        <div>
+          <strong>Quick links</strong>
+          <a href="order.html">New Order</a>
+          <a href="#dealers">Dealers</a>
+          <a href="#chatbot">Chatbot</a>
+          <a href="#admin">Admin Portal (coming soon)</a>
+          <a href="#dealer">Dealer Console (coming soon)</a>
+        </div>
+        <div>
+          <strong>Follow</strong>
+          <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer__meta">
+        <span>© 2025 PrintEase. All rights reserved.</span>
+        <div>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
+

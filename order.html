@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintEase | New Order</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="order-body">
+    <header class="site-header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html">PrintEase</a>
+        <nav class="nav">
+          <a href="index.html#hero">Home</a>
+          <a href="order.html" aria-current="page">New Order</a>
+          <a href="my-orders.html">My Orders</a>
+          <a href="index.html#chatbot">Chatbot</a>
+          <a href="index.html#contact">Contact</a>
+          <a class="login" href="login.html">Login</a>
+        </nav>
+        <button class="btn btn--ghost mobile-login">Menu</button>
+        <button class="nav-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="wizard" id="step1">
+        <div class="container wizard__wrapper">
+          <header class="wizard__head">
+            <div>
+              <p class="eyebrow">New order wizard</p>
+              <h1>Step 1 — Upload your document</h1>
+              <p class="lead">
+                Drag &amp; drop files or browse from your device. Once uploaded, we auto-detect
+                formats, page count, and prep instant previews.
+              </p>
+            </div>
+            <div class="wizard__support">
+              <span>Need help?</span>
+              <a class="link" href="#">Chat with a specialist</a>
+            </div>
+          </header>
+
+          <ol class="stepper" aria-label="Order progress">
+            <li class="is-active">
+              <span>1</span>
+              <div>
+                <strong>Upload</strong>
+                <small>Current step</small>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <strong>Customize</strong>
+                <small>Paper, binding</small>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>Dealers</strong>
+                <small>Select &amp; schedule</small>
+              </div>
+            </li>
+            <li>
+              <span>4</span>
+              <div>
+                <strong>Delivery</strong>
+                <small>Pickup/doorstep</small>
+              </div>
+            </li>
+          </ol>
+
+          <div class="wizard__grid">
+            <div class="wizard-upload">
+              <div class="upload-dropzone is-large" id="wizardDropzone">
+                <input
+                  type="file"
+                  id="wizardFileInput"
+                  accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+                  hidden
+                />
+                <div class="dropzone-icon">⬆️</div>
+                <p>Drag &amp; drop to upload</p>
+                <small>or <button type="button" class="link link--inline">browse files</button></small>
+                <div class="supported">
+                  Supported: PDF, DOCX, PPTX, JPG, PNG
+                </div>
+              </div>
+
+              <div class="wizard-progress">
+                <div class="wizard-progress__bar" id="wizardProgress"></div>
+              </div>
+              <div class="wizard-actions">
+                <button class="btn btn--primary" id="wizardUploadBtn" type="button" disabled>
+                  Upload document
+                </button>
+                <button class="btn btn--ghost" id="wizardReplaceBtn" type="button" disabled>
+                  Replace file
+                </button>
+                <button class="btn btn--ghost danger" id="wizardRemoveBtn" type="button" disabled>
+                  Remove file
+                </button>
+              </div>
+            </div>
+
+            <div class="wizard-preview">
+              <div class="preview-empty" id="previewEmpty">
+                <h3>No file selected</h3>
+                <p>Upload a document to see auto-generated thumbnails, metadata, and page count.</p>
+              </div>
+
+              <div class="preview-details" id="previewDetails" hidden>
+                <div class="preview-thumbs" id="previewThumbnails"></div>
+                <div class="preview-meta">
+                  <div>
+                    <span>Filename</span>
+                    <strong id="previewFileName">-</strong>
+                  </div>
+                  <div>
+                    <span>Size</span>
+                    <strong id="previewFileSize">-</strong>
+                  </div>
+                  <div>
+                    <span>Pages (auto)</span>
+                    <strong id="previewPageCount">-</strong>
+                  </div>
+                  <div>
+                    <span>Status</span>
+                    <strong id="previewStatus">Waiting</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="wizard__footer">
+            <div>
+              <p class="eyebrow">What happens next?</p>
+              <p class="lead small">
+                After uploading, step 2 lets you define paper, color, layout, and finishing. You can
+                always return to this step to swap files.
+              </p>
+            </div>
+            <button class="btn btn--primary" type="button" disabled id="wizardNextBtn">
+              Next: Customize prints
+            </button>
+          </footer>
+        </div>
+      </section>
+
+      <section class="wizard wizard--details" id="step2">
+        <div class="container wizard__wrapper">
+          <header class="wizard__head">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h1>Print &amp; finishing details</h1>
+              <p class="lead">
+                Define paper, layout, finishing, and pro add-ons. These preferences auto-save for
+                future orders.
+              </p>
+            </div>
+            <div class="wizard__support">
+              <span>Need suggestions?</span>
+              <a class="link" href="#">Talk to a print expert</a>
+            </div>
+          </header>
+
+          <ol class="stepper" aria-label="Order progress">
+            <li class="is-complete">
+              <span>1</span>
+              <div>
+                <strong>Upload</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-active">
+              <span>2</span>
+              <div>
+                <strong>Customize</strong>
+                <small>Current step</small>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>Dealers</strong>
+                <small>Next</small>
+              </div>
+            </li>
+            <li>
+              <span>4</span>
+              <div>
+                <strong>Delivery</strong>
+                <small>Pickup/doorstep</small>
+              </div>
+            </li>
+          </ol>
+
+          <div class="details-grid">
+            <form class="details-form">
+              <div class="form-group">
+                <label for="paperSize">Paper size</label>
+                <select id="paperSize">
+                  <option value="A4">A4</option>
+                  <option value="A3">A3</option>
+                  <option value="Letter">Letter</option>
+                  <option value="Legal">Legal</option>
+                  <option value="Custom">Custom size</option>
+                </select>
+                <div class="multi-input is-hidden" id="customSizeGroup">
+                  <input type="number" min="1" placeholder="Width (mm)" />
+                  <input type="number" min="1" placeholder="Height (mm)" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span>Print type</span>
+                <div class="pill-group" id="printTypeGroup">
+                  <label><input type="radio" name="printType" value="bw" checked />Black &amp; White</label>
+                  <label><input type="radio" name="printType" value="color" />Full Color</label>
+                  <label
+                    ><input type="radio" name="printType" value="mixed" />Mixed
+                    <small>Auto color detect</small></label
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span>Page layout</span>
+                <div class="pill-group">
+                  <label
+                    ><input type="radio" name="orientation" value="portrait" checked />Portrait</label
+                  >
+                  <label><input type="radio" name="orientation" value="landscape" />Landscape</label>
+                </div>
+                <div class="select-row">
+                  <label>
+                    Scaling
+                    <select id="scaling">
+                      <option>Fit to page</option>
+                      <option>Original size</option>
+                    </select>
+                  </label>
+                  <label>
+                    Margins
+                    <select id="marginSelect">
+                      <option value="normal">Normal</option>
+                      <option value="narrow">Narrow</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="multi-input is-hidden" id="customMarginGroup">
+                  <input type="number" min="0" placeholder="Top (mm)" />
+                  <input type="number" min="0" placeholder="Bottom (mm)" />
+                  <input type="number" min="0" placeholder="Left (mm)" />
+                  <input type="number" min="0" placeholder="Right (mm)" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="paperStock">Paper type / quality</label>
+                <select id="paperStock">
+                  <option value="normal">Normal (70 GSM)</option>
+                  <option value="premium">Premium (100 GSM)</option>
+                  <option value="glossy">Glossy</option>
+                  <option value="matte">Matte</option>
+                  <option value="cardstock">Cardstock</option>
+                  <option value="recycled">Recycled</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="copies">Copies</label>
+                <input type="number" id="copies" min="1" max="500" value="1" />
+              </div>
+
+              <div class="form-group">
+                <span>Print sides</span>
+                <div class="pill-group">
+                  <label><input type="radio" name="sides" value="single" checked />Single-sided</label>
+                  <label><input type="radio" name="sides" value="double" />Double-sided (duplex)</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span>Page range</span>
+                <div class="pill-group">
+                  <label><input type="radio" name="pageRange" value="all" checked />All pages</label>
+                  <label><input type="radio" name="pageRange" value="custom" />Custom</label>
+                </div>
+                <input
+                  type="text"
+                  class="is-hidden"
+                  id="pageRangeInput"
+                  placeholder="e.g., 1-10, 15, 18-22"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="quality">Print quality</label>
+                <select id="quality">
+                  <option value="draft">Draft</option>
+                  <option value="normal" selected>Normal</option>
+                  <option value="high">High quality</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <span>Special add-ons</span>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="watermarkToggle" />
+                  <span>Watermark text</span>
+                </label>
+                <input
+                  type="text"
+                  id="watermarkInput"
+                  class="is-hidden"
+                  placeholder="Enter watermark text"
+                />
+                <label class="checkbox-row">
+                  <input type="checkbox" id="pageNumberingToggle" checked />
+                  <span>Page numbering</span>
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="coverToggle" />
+                  <span>Cover page</span>
+                </label>
+                <div class="cover-options is-hidden" id="coverOptions">
+                  <select>
+                    <option value="color">Solid color</option>
+                    <option value="upload">Upload custom cover</option>
+                  </select>
+                  <input type="color" value="#2563eb" />
+                  <input type="file" accept="image/*,.pdf" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span>Binding options</span>
+                <div class="binding-grid" id="bindingGrid">
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="none" checked />
+                    <strong>None</strong>
+                    <small>Loose sheets</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="stapled" />
+                    <strong>Stapled</strong>
+                    <small>Corner staple</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="spiral" />
+                    <strong>Spiral</strong>
+                    <small>Plastic coil</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="soft" />
+                    <strong>Soft binding</strong>
+                    <small>Glued spine, soft cover</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="hard" />
+                    <strong>Hard binding</strong>
+                    <small>Premium stiff cover</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="tape" />
+                    <strong>Tape binding</strong>
+                    <small>Adhesive strip</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="comb" />
+                    <strong>Comb binding</strong>
+                    <small>Plastic comb rings</small>
+                  </label>
+                  <label class="binding-card">
+                    <input type="radio" name="binding" value="perfect" />
+                    <strong>Perfect binding</strong>
+                    <small>Book-style glued spine</small>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span>Finishing</span>
+                <div class="finishing-grid">
+                  <label>
+                    Lamination
+                    <select id="lamination">
+                      <option value="none">None</option>
+                      <option value="single">Single page</option>
+                      <option value="full">Entire document</option>
+                    </select>
+                  </label>
+                  <label>
+                    Hole punch
+                    <select>
+                      <option>None</option>
+                      <option>2 holes</option>
+                      <option>4 holes</option>
+                    </select>
+                  </label>
+                  <label>
+                    Folding
+                    <select>
+                      <option>None</option>
+                      <option>Bi-fold</option>
+                      <option>Tri-fold</option>
+                    </select>
+                  </label>
+                  <label>
+                    Edge cutting
+                    <select>
+                      <option>Standard</option>
+                      <option>Rounded corners</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </form>
+
+            <aside class="details-preview">
+              <div class="preview-card">
+                <h3>Live preview</h3>
+                <div class="preview-frame" id="mockPreview">
+                  <div class="preview-sheet" id="mockSheet">
+                    <span id="mockPaperLabel">A4 • Portrait</span>
+                    <div class="mock-binding" id="mockBinding">None</div>
+                  </div>
+                </div>
+                <ul class="preview-list">
+                  <li><span>Stock</span><strong id="mockStock">Normal (70 GSM)</strong></li>
+                  <li><span>Copies</span><strong id="mockCopies">1</strong></li>
+                  <li><span>Quality</span><strong id="mockQuality">Normal</strong></li>
+                  <li><span>Finishing</span><strong id="mockFinish">No lamination</strong></li>
+                </ul>
+              </div>
+
+              <div class="details-summary">
+                <h3>Auto-detected insights</h3>
+                <ul>
+                  <li>
+                    <strong>Color pages</strong>
+                    <span id="mockColorPages">12 of 48</span>
+                  </li>
+                  <li>
+                    <strong>Recommended binding</strong>
+                    <span>Soft binding for 48 pages</span>
+                  </li>
+                  <li>
+                    <strong>Estimated weight</strong>
+                    <span>~420 g</span>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+
+          <footer class="wizard__footer">
+            <button class="btn btn--ghost" type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+              ← Back to upload
+            </button>
+            <div class="footer-actions">
+              <small>Save these preferences as a template for future orders.</small>
+              <button class="btn btn--primary" type="button" id="detailsNextBtn">
+                Next: Dealers &amp; delivery
+              </button>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <section class="wizard wizard--dealers" id="step3">
+        <div class="container wizard__wrapper">
+          <header class="wizard__head">
+            <div>
+              <p class="eyebrow">Step 3</p>
+              <h1>Choose dealer &amp; delivery</h1>
+              <p class="lead">
+                Compare verified partners, auto-select the best match, then confirm pickup or
+                doorstep delivery.
+              </p>
+            </div>
+            <div class="wizard__support">
+              <span>Need a recommendation?</span>
+              <a class="link" href="#">Ping concierge</a>
+            </div>
+          </header>
+
+          <ol class="stepper" aria-label="Order progress">
+            <li class="is-complete">
+              <span>1</span>
+              <div>
+                <strong>Upload</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-complete">
+              <span>2</span>
+              <div>
+                <strong>Customize</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-active">
+              <span>3</span>
+              <div>
+                <strong>Dealers</strong>
+                <small>Current step</small>
+              </div>
+            </li>
+            <li>
+              <span>4</span>
+              <div>
+                <strong>Delivery</strong>
+                <small>Review next</small>
+              </div>
+            </li>
+          </ol>
+
+          <div class="dealer-controls">
+            <div class="search-bar">
+              <input type="search" id="dealerSearch" placeholder="Search by dealer or location" />
+              <button class="btn btn--primary" id="dealerSearchBtn">Search</button>
+            </div>
+            <div class="filters">
+              <button class="chip" data-filter="distance">&lt; 3km</button>
+              <button class="chip" data-filter="rating">4★+</button>
+              <button class="chip" data-filter="price">Budget friendly</button>
+              <button class="chip" data-filter="binding">Binding</button>
+              <button class="chip" data-filter="lamination">Lamination</button>
+              <button class="chip" data-filter="fast">Fastest</button>
+            </div>
+            <div class="sort-group">
+              <label>
+                Sort
+                <select id="dealerSort">
+                  <option value="best">Best match</option>
+                  <option value="nearest">Nearest</option>
+                  <option value="cheapest">Cheapest</option>
+                  <option value="rating">Highest rated</option>
+                  <option value="fastest">Fastest</option>
+                </select>
+              </label>
+              <button class="btn btn--ghost" id="autoSelectDealer">Auto-select best dealer</button>
+            </div>
+          </div>
+
+          <div class="view-toggle">
+            <button class="chip is-active" data-view="list">List view</button>
+            <button class="chip" data-view="map">Map view</button>
+          </div>
+
+          <div class="dealer-view">
+            <div class="dealer-list" id="dealerList"></div>
+            <div class="dealer-map" id="dealerMap">
+              <div class="dealer-map__header">
+                <h3>Live map preview</h3>
+                <p>Shows ETA based on selected dealer</p>
+              </div>
+              <div class="dealer-map__canvas">
+                <span>🗺️</span>
+                <p>Interactive map coming soon</p>
+              </div>
+              <ul id="mapBadges" class="map-badges"></ul>
+            </div>
+          </div>
+
+          <div class="delivery-panel">
+            <div class="delivery-options">
+              <div class="form-group">
+                <span>Fulfillment method</span>
+                <div class="pill-group">
+                  <label><input type="radio" name="fulfillment" value="delivery" checked />Home delivery</label>
+                  <label><input type="radio" name="fulfillment" value="pickup" />Store pickup</label>
+                </div>
+              </div>
+
+              <div class="delivery-form" id="deliveryForm">
+                <div class="form-row">
+                  <label>Name<input type="text" placeholder="Full name" id="deliveryName" /></label>
+                  <label>Pincode<input type="text" placeholder="560001" id="deliveryPin" /></label>
+                </div>
+                <label>Address<input type="text" placeholder="Flat / Street / Area" id="deliveryAddress" /></label>
+                <label>Landmark<input type="text" placeholder="Near metro station" id="deliveryLandmark" /></label>
+                <label>
+                  Preferred slot
+                  <select id="deliverySlot">
+                    <option>Today • 6:30-7:00 PM</option>
+                    <option>Today • 7:00-7:30 PM</option>
+                    <option>Tomorrow • 9:00-10:00 AM</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="pickup-info is-hidden" id="pickupInfo">
+                <p>
+                  Pickup at <strong id="pickupAddress">Select a dealer to view address</strong>
+                </p>
+                <label>
+                  Pickup slot
+                  <select id="pickupSlot">
+                    <option>Within 30 mins</option>
+                    <option>Today • 8:00 PM</option>
+                    <option>Tomorrow • 9:30 AM</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <aside class="cost-breakdown">
+              <h3>Estimated cost</h3>
+              <ul>
+                <li><span>Printing</span><strong id="costPrinting">₹0</strong></li>
+                <li><span>Add-ons</span><strong id="costAddons">₹0</strong></li>
+                <li><span>Dealer charges</span><strong id="costDealer">₹0</strong></li>
+                <li><span>Delivery</span><strong id="costDelivery">₹0</strong></li>
+                <li><span>Taxes</span><strong id="costTaxes">₹0</strong></li>
+              </ul>
+              <div class="cost-total">
+                <span>Total</span>
+                <strong id="costTotal">₹0</strong>
+              </div>
+              <p class="muted">Exact pricing appears before payment.</p>
+            </aside>
+          </div>
+
+          <footer class="wizard__footer">
+            <button class="btn btn--ghost" type="button" onclick="document.getElementById('step2').scrollIntoView({behavior:'smooth'})">
+              ← Back to details
+            </button>
+            <div class="footer-actions">
+              <small>Dealer &amp; delivery choices are saved to your order draft.</small>
+              <button class="btn btn--primary" type="button" id="confirmDealerBtn">
+                Confirm dealer &amp; delivery
+              </button>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <section class="wizard wizard--review" id="step4">
+        <div class="container wizard__wrapper">
+          <header class="wizard__head">
+            <div>
+              <p class="eyebrow">Step 4</p>
+              <h1>Review &amp; confirm</h1>
+              <p class="lead">
+                Double-check every detail, choose payment, and place your order with confidence.
+              </p>
+            </div>
+            <div class="wizard__support">
+              <span>Need edits?</span>
+              <a class="link" href="#step2">Jump back to customization</a>
+            </div>
+          </header>
+
+          <ol class="stepper" aria-label="Order progress">
+            <li class="is-complete">
+              <span>1</span>
+              <div>
+                <strong>Upload</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-complete">
+              <span>2</span>
+              <div>
+                <strong>Customize</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-complete">
+              <span>3</span>
+              <div>
+                <strong>Dealers</strong>
+                <small>Done</small>
+              </div>
+            </li>
+            <li class="is-active">
+              <span>4</span>
+              <div>
+                <strong>Review</strong>
+                <small>Current step</small>
+              </div>
+            </li>
+          </ol>
+
+          <div class="review-grid">
+            <div class="review-card">
+              <h3>Order summary</h3>
+              <div class="file-summary">
+                <div class="file-thumb" id="summaryThumb">📄</div>
+                <div>
+                  <strong id="summaryFileName">document.pdf</strong>
+                  <p id="summarySpecs">48 pages • Color &amp; duplex • Premium stock</p>
+                </div>
+                <button class="link" type="button" onclick="document.getElementById('step1').scrollIntoView({behavior:'smooth'})">
+                  Edit upload
+                </button>
+              </div>
+              <ul class="review-list">
+                <li><span>Dealer</span><strong id="summaryDealer">Select a dealer</strong></li>
+                <li><span>Fulfillment</span><strong id="summaryFulfillment">Delivery</strong></li>
+                <li><span>Slot</span><strong id="summarySlot">--</strong></li>
+                <li><span>Cost estimate</span><strong id="summaryCost">₹0</strong></li>
+              </ul>
+            </div>
+
+            <div class="review-card">
+              <h3>Payment</h3>
+              <div class="pill-group payment-group">
+                <label><input type="radio" name="payment" value="online" checked />Online (Card / UPI)</label>
+                <label><input type="radio" name="payment" value="cod" />Pay on pickup/delivery</label>
+              </div>
+              <p class="muted">
+                You’ll be charged only after the dealer confirms availability. For COD, payment happens
+                at pickup or via QR on delivery.
+              </p>
+              <button class="btn btn--primary accent" type="button" id="placeOrderBtn">
+                Place order
+              </button>
+            </div>
+          </div>
+
+          <div class="success-card is-hidden" id="successCard">
+            <div>
+              <h2>Order placed 🎉</h2>
+              <p>Your order ID is <strong id="successOrderId">PE-00000</strong></p>
+              <p>Ready by <strong id="successEta">--</strong>. We’ve sent the details to your email.</p>
+            </div>
+            <div class="success-actions">
+              <button class="btn btn--primary" type="button">Track order</button>
+              <button class="btn btn--ghost" type="button">Message dealer</button>
+            </div>
+            <small>Need to cancel? You have 5 minutes to modify the order without charges.</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="dealer-modal is-hidden" id="dealerModal" role="dialog" aria-modal="true">
+      <div class="dealer-modal__content">
+        <button class="dealer-modal__close" id="dealerModalClose">×</button>
+        <h3 id="modalDealerName">Dealer name</h3>
+        <p id="modalDealerMeta">Rating • Distance • Time</p>
+        <div class="modal-gallery" id="modalGallery">
+          <span>Photo previews</span>
+        </div>
+        <div class="modal-grid">
+          <div>
+            <h4>Services</h4>
+            <ul id="modalServices"></ul>
+          </div>
+          <div>
+            <h4>Sample prices</h4>
+            <ul id="modalPrices"></ul>
+          </div>
+        </div>
+        <div>
+          <h4>Reviews</h4>
+          <ul id="modalReviews" class="modal-reviews"></ul>
+        </div>
+        <div>
+          <h4>FAQ</h4>
+          <ul class="modal-faq">
+            <li>Turnaround: within 2 hours for &lt;100 pages</li>
+            <li>Color calibration: X-Rite verified profiles</li>
+            <li>Bulk deals: contact for 500+ pages</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
+

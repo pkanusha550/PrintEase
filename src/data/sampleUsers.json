@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "email": "john@example.com",
+      "password": "password123",
+      "name": "John Doe",
+      "phone": "+91 98765 43210",
+      "role": "customer",
+      "createdAt": "2024-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "user_2",
+      "email": "jane@example.com",
+      "password": "password123",
+      "name": "Jane Smith",
+      "phone": "+91 98765 43211",
+      "role": "customer",
+      "createdAt": "2024-02-20T00:00:00.000Z"
+    },
+    {
+      "id": "admin_1",
+      "email": "admin@printease.in",
+      "password": "admin123",
+      "name": "Admin User",
+      "phone": "+91 98765 00001",
+      "role": "admin",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "dealer_1",
+      "email": "dealer@printease.in",
+      "password": "dealer123",
+      "name": "PixelPrint Hub",
+      "phone": "+91 98765 43220",
+      "role": "dealer",
+      "dealerId": 1,
+      "createdAt": "2024-01-10T00:00:00.000Z"
+    },
+    {
+      "id": "dealer_2",
+      "email": "express@printease.in",
+      "password": "dealer123",
+      "name": "Express Xerox",
+      "phone": "+91 98765 43221",
+      "role": "dealer",
+      "dealerId": 2,
+      "createdAt": "2024-01-12T00:00:00.000Z"
+    },
+    {
+      "id": "dealer_3",
+      "email": "studio9@printease.in",
+      "password": "dealer123",
+      "name": "Print Studio 9",
+      "phone": "+91 98765 43222",
+      "role": "dealer",
+      "dealerId": 3,
+      "createdAt": "2024-01-14T00:00:00.000Z"
+    }
+  ]
+}
+
